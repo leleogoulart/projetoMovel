@@ -1,0 +1,138 @@
+# Instalação dos requisitos para desenvolvimento em Windows 10/11
+
+## 1. Preparando o ambiente de trabalho
+Clique na barra de pesquisa (Pesquisar) ao lado do botão iniciar e digite: powershell
+Clique na opção "Executar como administrador"
+Informe o usuário com privilégio administrativo e respectiva senha
+Uma janela com título: "Administrador: Windows PowerShell" estará disponível.
+É nessa janela que executaremos os demais comandos
+
+### 1.1. Ajustando as permissões de execução
+Verifique a configuração das permissões
+> Get-ExecutionPolicy
+
+Se aparecer "Restricted" (Bypass ou outra informação) então digite:
+> Set-ExecutionPolicy AllSigned
+
+Verifique novamente as permissões
+> Get-ExecutionPolicy
+AllSigned
+
+Isto confirma que podemos prosseguir. Caso não apareça "AllSigned", feche a janela e
+repita o procedimento 1 até obter sucesso. Se ainda houver alguma dúvida, traga a 
+pergunta para sala de aula.
+
+## 2. Instalando os programas necessários
+### 2.1. Instalando o gerenciador de pacotes chocolatey
+Copie e cole o conteúdo a seguir no terminal powershell com privilégio de administrador e pressione ENTER
+
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+
+Após alguns instantes a instalação é concluída.
+
+Verifique o sucesso desta etapa com:
+> choco --version
+  2.4.2
+
+Nota: A versão será igual ou mais recente.
+
+### 2.2. Intalando o VSCode (editor de texto com destaque para sintaxe de códigos)
+> choco install vscode -y
+
+### 2.3. Instalando o Git (para utilizar com GitHub)
+> choco install git.install -y
+
+**Requisitos para desenvolvimento de aplicações em Python**
+
+### 2.4. Instalando o Python 3.13
+> choco install python313 -y
+
+**Requisitos para Android**
+
+### 2.5. Instalando o Node.JS
+> choco install nodejs-lts -y
+
+### 2.6. Instalando o java 11
+> choco install openjdk11 -y
+
+### 2.7. Gerenciador de versões do NodeJS
+> choco install nvm -y
+
+### 2.8. Gerenciador de pacotes alternativo ao NPM (padrão)
+> choco install yarn -y
+
+### 2.9. Visualizador do celular na tela do computador
+> choco install scrcpy -y
+
+### 2.10. [OPCIONAL!] Android Studio v2024.2.2.14 (Requer 1.15GB)
+Para execução e testes do projeto desenvolvido é possível usar o Android Studio (emulador requer ao menos 16GB RAM)
+> choco install androidstudio -y
+
+Para testes utilizando computadores mais simples, precisamos de ao menos 4GB de RAM para utilizar o EXPO + Expo-GO no celular
+
+## 3. Verificar as instalações 
+
+Reinicie o computador (ou desligue e ligue novamente) antes de verificar as instalações que acabou de realizar.
+
+Abra um powershell (não é necessário privilégio administrativo)
+
+### 3.1. Listar todos os pacotes instlados com chocolatey 
+> choco list 
+
+### 3.2. Verificar cada pacote instalado individualmente
+> python --version
+Python 3.13.1
+
+> code --version
+1.97.2
+
+> git --version
+git version 2.48.1.windows.1
+
+> node --version
+v22.14.0
+
+> java --version
+openjdk 11.0.2 2019-01-15
+OpenJDK Runtime Environment 18.9 (build 11.0.2+9)
+OpenJDK 64-Bit Server VM 18.9 (build 11.0.2+9, mixed mode)
+
+> nvm --version
+
+> scrcpy --version
+O screenCopy, quando executado para espelhamento de tela vai solicitar autorização no dispositivo
+Caso o dispositivo não tenha o "Modo desenvolvedor" ativado, é necessário ativar antes de usar
+este programa.
+
+No Android o processo pode variar um pouco conforme a versão do sistema.
+Verifique sua versão do Android e pesquise sobre este procedimento
+Exemplo de texto para pesquisa: como ativar o modo desenvolvedor no Samsung A15
+Siga as instruções para desbloqueio dessa funcionalidade
+
+## 4. Pesquisar outros pacotes para instalar com chocolatey
+
+Buscando informações sobre o navegador Google Chrome, por exemplo
+> choco search google chrome
+
+Instalando o Google Chrome mais recente
+> choco install googlechrome -y
+
+## 5. Configurando o VSCode (instalação de extensões)
+
+**Geral**
+- GitLens by GitKraken
+- Code Spell Checher by Street Side Software
+- Preview by Haixin Chen
+- Live Preview by Microsoft
+- Thunder client by Thunder Client
+
+**Para Python**
+- Python by Microsoft
+- Python Debugger by Microsoft
+- Jupyter by Microsoft
+
+**Para Android**
+- Prettier by Prettier.io
+- React Native Tools by Microsoft
+- ESLint by Microsoft
+- Color Highlight by Sergii N
