@@ -1,0 +1,14 @@
+# --- LLM e Framework ---
+# O "cérebro" (Gemini) e suas conexões com o LangChain
+langchain-google-genai
+langchain-core
+
+# --- Ferramentas (Tools) ---
+# Onde vivem as ferramentas (como DuckDuckGoSearchRun)
+langchain-community
+# A biblioteca que o DuckDuckGo realmente usa
+duckduckgo-search
+
+# --- Utilitários (Boas Práticas) ---
+# Para carregar chaves de API de um arquivo .env
+python-dotenv
